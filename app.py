@@ -1,6 +1,7 @@
 from flask import Flask, request, render_template, redirect, flash, session, jsonify
 from flask_debugtoolbar import DebugToolbarExtension
 import tekore as tk
+import asyncio
 from models import db, connect_db
 
 app = Flask(__name__)
@@ -24,11 +25,17 @@ redirect_uri = "http://127.0.0.1:5000"
 app_token = tk.request_client_token(client_id, client_secret)
 
 # Calling the API
-spotify = tk.Spotify(app_token)
+spotify = tk.Spotify(app_token, sender=tk.AsyncSender())
+
+async def get_artist_albums():
+    return await spotify.artist_albums("1wAkNf5IFauLqZgJFY2mAg", limit=5)
+
+albums = asyncio.run(get_artist_albums())
 
 connect_db(app)
 
 @app.route('/')
 def index_page():
-    results = spotify.artist_albums("1wAkNf5IFauLqZgJFY2mAg")
-    return render_template('index.html', results=results)
+    #albums = asyncio.run(get_artist_albums())
+    #albums = albums.items[0]
+    return render_template('index.html', albums=albums)
