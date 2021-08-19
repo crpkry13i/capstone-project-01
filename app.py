@@ -6,12 +6,14 @@ from models import db, connect_db
 
 app = Flask(__name__)
 
+
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///music_db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_ECHO'] = False
 app.config['SECRET_KEY'] = "secret"
 app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
 debug = DebugToolbarExtension(app)
+
 
 BASE_API = "https://api.spotify.com"
 AUTH = "https://accounts.spotify.com/authorize"
@@ -36,6 +38,9 @@ async def get_artist_albums():
 albums = asyncio.run(get_artist_albums())
 
 connect_db(app)
+
+for item in albums.items:
+    print(item)
 
 @app.route('/')
 def index_page():
