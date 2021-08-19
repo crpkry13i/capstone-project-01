@@ -27,8 +27,11 @@ app_token = tk.request_client_token(client_id, client_secret)
 # Calling the API
 spotify = tk.Spotify(app_token, sender=tk.AsyncSender())
 
+# Artist ID
+ryleinathaniel = "1wAkNf5IFauLqZgJFY2mAg"
+
 async def get_artist_albums():
-    return await spotify.artist_albums("1wAkNf5IFauLqZgJFY2mAg", limit=5)
+    return await spotify.artist_albums(ryleinathaniel, limit=5)
 
 albums = asyncio.run(get_artist_albums())
 
@@ -36,6 +39,12 @@ connect_db(app)
 
 @app.route('/')
 def index_page():
-    #albums = asyncio.run(get_artist_albums())
-    #albums = albums.items[0]
-    return render_template('index.html', albums=albums)
+    album_image = albums.items[0].images[1].url
+    album_name = albums.items[0].name
+    release_date = albums.items[0].release_date
+    album_link = albums.items[0].external_urls['spotify']
+    return render_template('index.html', 
+        album_image=album_image, 
+        album_name=album_name, 
+        release_date=release_date,
+        album_link=album_link)
