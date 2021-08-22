@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+  <title>Music</title>
+</head>
+
+<body style="background-color: black;">
+  <h1 style="color: rgb(74, 74, 131)" class="text text-center">Rylei Nathaniel Music List</h1>
+  <div class="container-fluid">
+    <div class="row row-cols-1 row-cols-md-4 g-2">
+      <div class="col">
+        <div class="card">
+          <img src="{{album_image}}" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title text-center">{{album_name}}</h5>
+            <p class="card-text text-center">{{release_date}}<br>
+              <a href="{{album_link}}" class="btn btn-primary">Listen Here</a>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card">
+          <img src="{{album_image1}}" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title text-center">{{album_name1}}</h5>
+            <p class="card-text text-center">{{release_date1}}<br>
+              <a href="{{album_link1}}" class="btn btn-primary">Listen Here</a>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card">
+          <img src="{{album_image2}}" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title text-center">{{album_name2}}</h5>
+            <p class="card-text text-center">{{release_date2}}<br>
+              <a href="{{album_link2}}" class="btn btn-primary">Listen Here</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<div class="text-center m-5">
+  <a href="/7">Previous</a>
+  <a href="/">Next</a>
+</div>
+</html>
