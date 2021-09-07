@@ -3,6 +3,7 @@ from flask_debugtoolbar import DebugToolbarExtension
 import tekore as tk
 import asyncio
 from models import db, connect_db
+from secret import client_id, client_secret
 import os
 
 app = Flask(__name__)
@@ -20,8 +21,8 @@ BASE_API = "https://api.spotify.com"
 AUTH = "https://accounts.spotify.com/authorize"
 MY_URI = "spotify:artist:1wAkNf5IFauLqZgJFY2mAg"
 
-client_id = "8fbed18498c2466db7bb5253d588f6ac"
-client_secret = "83e6aa9fa09741289506e394cc726af7"
+client_id = client_id
+client_secret = client_secret
 redirect_uri = "http://127.0.0.1:5000"
 
 # Retrieving a client token
